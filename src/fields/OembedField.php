@@ -67,7 +67,7 @@ class OembedField extends Field
     /**
      * @return array
      */
-    public function rules()
+    public function rules(): array
     {
         $rules = parent::rules();
         return $rules;
@@ -80,7 +80,7 @@ class OembedField extends Field
      *                appended as well.
      * @see \yii\db\QueryBuilder::getColumnType()
      */
-    public function getContentColumnType(): string
+    public function getContentColumnType(): array|string
     {
         return Schema::TYPE_TEXT;
     }
@@ -89,7 +89,7 @@ class OembedField extends Field
      * @inheritdoc
      * @since 3.3.0
      */
-    public function getContentGqlType()
+    public function getContentGqlType(): array|\GraphQL\Type\Definition\Type
     {
         $typeArray = OembedFieldTypeGenerator::generateTypes($this);
 
@@ -106,7 +106,7 @@ class OembedField extends Field
      *
      * @return mixed The prepared field value
      */
-    public function normalizeValue($value, ElementInterface $element = null)
+    public function normalizeValue(mixed $value, ?\craft\base\ElementInterface $element = null): mixed
     {
         // If null, don’t proceed
         if ($value === null) {
@@ -149,7 +149,7 @@ class OembedField extends Field
      *                                param, if any.
      * @return null|false `false` in the event that the method is sure that no elements are going to be found.
      */
-    public function serializeValue($value, ElementInterface $element = null)
+    public function serializeValue(mixed $value, ?\craft\base\ElementInterface $element = null): mixed
     {
         return parent::serializeValue($value, $element);
     }
@@ -157,7 +157,7 @@ class OembedField extends Field
     /**
      * @return string|null
      */
-    public function getSettingsHtml()
+    public function getSettingsHtml(): ?string
     {
         return null;
     }
@@ -168,7 +168,7 @@ class OembedField extends Field
      *                                       value]], raw POST data (i.e. if there was a validation error), or null
      * @return string The input HTML.
      */
-    public function getInputHtml($value, ElementInterface $element = null): string
+    public function getInputHtml(mixed $value, ?\craft\base\ElementInterface $element = null): string
     {
         $settings = Oembed::getInstance()->getSettings();
         $hidden = $settings['previewHidden'];

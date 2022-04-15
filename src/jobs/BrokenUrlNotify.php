@@ -19,7 +19,7 @@ class BrokenUrlNotify extends BaseJob
     /**
      * @inheritdoc
      */
-    public function execute($queue)
+    public function execute($queue): void
     {
         $email = Oembed::getInstance()->getSettings()->notificationEmail;
         $subject = Craft::$app->getSystemName() . ' :: oEmbed detected broken URL';
@@ -44,7 +44,7 @@ class BrokenUrlNotify extends BaseJob
     /**
      * @inheritdoc
      */
-    protected function defaultDescription(): string
+    protected function defaultDescription(): ?string
     {
         return Craft::t('app', 'Send notification of broken URL');
     }

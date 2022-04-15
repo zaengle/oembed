@@ -21,7 +21,7 @@ class OembedFieldTypeGenerator implements GeneratorInterface
     /**
      * @inheritdoc
      */
-    public static function generateTypes($context = null): array
+    public static function generateTypes(mixed $context = null): array
     {
         /** @var OembedField $context */
         $typeName = self::getName($context);
